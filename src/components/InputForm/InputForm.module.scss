@@ -1,0 +1,41 @@
+.inputform{
+	margin: 10px 0 0;
+}
+.inputform__title {
+  color: #8b8b8b;
+  font-size: 14px;
+  margin: 0 0 10px 0;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.inputform__input {
+  padding: 12px 15px;
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+	opacity: 0.5;
+	cursor: pointer;
+}
+
+.inputform__error {
+  display: block;
+  margin: 3px 0 0;
+  padding: 0;
+  min-height: 16px;
+  color: #ee3465;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.inputform__input-error {
+  color: #ee3465;
+}
+.inputform__input:focus {
+  box-shadow: inset -1px -1px 5px 1px rgba(254, 95, 30, 0.5);
+	border: 1px solid #fe5f1e;
+}
+.inputform__input:valid {
+	border: 1px solid #fe5f1e;
+}

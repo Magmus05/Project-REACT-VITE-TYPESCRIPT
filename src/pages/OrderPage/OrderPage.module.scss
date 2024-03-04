@@ -1,0 +1,48 @@
+.container {
+  width: 95%;
+  margin: 0 auto;
+}
+.title {
+  text-align: center;
+	margin-bottom: 30px;
+  @media (max-width: 600px) {
+    font-size: 30px;
+  }
+}
+.form {
+  width: 396px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  @media (max-width: 500px) {
+    width: 290px;
+  }
+}
+
+.button {
+	height: 50px ;
+	font-size: 16px;
+	font-weight: 600;
+	margin: 30px 0 0;
+	padding: 16px;
+  color: #fff;
+  display: inline-block;
+  background-color: #fe5f1e;
+  border-radius: 30px;
+  padding: 10px 20px;
+  min-width: 100px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+  border: 1px solid transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.button:disabled {
+  background: #7b7b7b;
+  opacity: 0.5;
+}
