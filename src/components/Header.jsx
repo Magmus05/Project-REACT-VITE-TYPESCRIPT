@@ -1,9 +1,10 @@
 import headerLogo from "../assets/img/pizza-logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useLocation} from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export default function Header() {
   const { totalPrice, totalCount } = useSelector((state) => state.cartSlice);
+  const location = useLocation()
 
   // Находим общее количество товаров к корзине, у каждого продукта(item) берем count  и прибавляем к sum(аккумулятор в reduce)
   // const totalCount = items.reduce((sum, item) => sum + item.count, 0);
@@ -23,15 +24,25 @@ export default function Header() {
         <nav className="header__search-and-contacts">
           <ul className="header__menu">
             <li>
-              <Link className="header__menu-item" to="/">
+              <Link className={`header__menu-item ${location.pathname === "/about-us"? "header__menu-item_active": ""}`} to="/about-us">
                 О нас
               </Link>
             </li>
             <li>
-              <Link className="header__menu-item" to="/">
+              <Link className={`header__menu-item ${location.pathname === "/contacts"? "header__menu-item_active": ""}`} to="/contacts">
                 Контакты
               </Link>
             </li>
+            {/* <li>
+              <Link className={`header__menu-item ${location.pathname === "/about-us"? "header__menu-item_active": ""}`} to="/contacts">
+                Оплата
+              </Link>
+            </li>
+            <li>
+              <Link className={`header__menu-item ${location.pathname === "/contacts"? "header__menu-item_active": ""}`} to="/contacts">
+                Доставка
+              </Link>
+            </li> */}
           </ul>
         </nav>
 

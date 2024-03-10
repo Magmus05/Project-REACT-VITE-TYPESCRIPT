@@ -6,6 +6,8 @@ import NotFoundPage from "./pages/NotFound";
 import Cart from "./pages/Cart";
 import { Routes, Route } from "react-router-dom";
 import OrderPage from "./pages/OrderPage/OrderPage";
+import Contacts from "./pages/Contacts/Contacts";
+import AboutUs from "./pages/AboutUs/AboutUs";
 
 // import { useSelector, useDispatch } from "react-redux";
 // import {  increment, multiplication } from "./redux/slices/counterSlice";
@@ -25,6 +27,8 @@ function App() {
             <Route path="/" element={<Main />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/order" element={<OrderPage />} />
+            <Route path="/contacts" element={<Contacts />} />
+            <Route path="/about-us" element={<AboutUs />} />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </div>
