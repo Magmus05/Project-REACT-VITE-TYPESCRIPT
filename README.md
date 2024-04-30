@@ -2,11 +2,11 @@
 
 ## Пэт проект Pizza
 
-__##Стэк:__ Vite, React, Redux, Scss, TypeScript
+__## Стэк:__ Vite, React, Redux, Scss, TypeScript
 
-##[Ссылка на сайт](https://pizza.magmus-web.ru/) ![логотип](./src/assets/img/logoForReadme.png)
+## [Ссылка на сайт](https://pizza.magmus-web.ru/)
 
-__##Описание:__ 
+__## Описание:__ 
 - возможность менять категории на главной странице,
 - возможность поиска товара по названию,
 - сортировка, 
