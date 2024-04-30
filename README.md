@@ -4,7 +4,7 @@
 
 __##Стэк:__ Vite, React, Redux, Scss, TypeScript
 
-##[Ссылка на сайт](https://pizza.magmus-web.ru/) ![логотип](./src/assets/img/pizza-logo.svg)
+##[Ссылка на сайт](https://pizza.magmus-web.ru/) ![логотип](./src/assets/img/logoForReadme.png)
 
 __##Описание:__ 
 - возможность менять категории на главной странице,
