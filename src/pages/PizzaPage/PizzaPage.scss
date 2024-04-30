@@ -1,0 +1,16 @@
+.pizzaPage{
+	display: flex;
+	gap: 20px;
+
+	&__image{
+		display: block;
+	}
+	&__info{
+	h2,p{
+		margin-bottom: 20px;
+	}
+	span{
+		font-weight: 700;
+	}
+	}
+}

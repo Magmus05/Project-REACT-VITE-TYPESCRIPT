@@ -1,8 +1,7 @@
-# React + Vite
+# Project-REACT-VITE-TYPESCRIPT
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h1>Пэт проект Pizza</h1>
 
-Currently, two official plugins are available:
+<h2>Стэк:</h2> <span> Vite, React, Redux, Scss, TypeScript</span>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+<h2>Сайт:</h2> <span> https://pizza.magmus-web.ru/</span>
