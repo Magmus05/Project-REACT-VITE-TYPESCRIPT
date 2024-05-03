@@ -18,7 +18,8 @@ const PizzaBlock: React.FC<IPizzaBlockProps> = ({
   const dispatch = useDispatch();
   const cartItem = useSelector(selectCartItemById(id));
 
-  const addedItemCount = cartItem ? cartItem.count : 0;
+  const addedItemCount: number | undefined = cartItem ? cartItem.count : 0;
+  
   const addPizzaInCart = () => {
     dispatch(
       addItem({
@@ -26,11 +27,13 @@ const PizzaBlock: React.FC<IPizzaBlockProps> = ({
         title,
         price: Math.round(price * Number(`1.${activeSize}`)),
         imageUrl,
-        type: typeNames[activeType],
+        type: Number(typeNames[activeType]),
         size: sizes[activeSize],
+        count: 0,
       })
     );
   };
+console.log(addedItemCount);
 
   return (
     <>
@@ -84,7 +87,8 @@ const PizzaBlock: React.FC<IPizzaBlockProps> = ({
               />
             </svg>
             <span>Добавить</span>
-            {addedItemCount > 0 && <i>{cartItem.count}</i>}
+            { addedItemCount > 0
+               && <i>{cartItem? cartItem.count: ''}</i>}
           </button>
         </div>
       </div>

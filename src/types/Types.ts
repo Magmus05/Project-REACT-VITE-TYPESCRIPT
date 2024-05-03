@@ -8,7 +8,12 @@ export interface IPizza {
   category: number;
   rating: number;
 }
-
+export interface IpizzaSlice {
+  items: IPizzaBlockProps[];
+  status: "loading" | "success" | "error";
+  searchValue: string;
+  item: IPizza | null;
+}
 export interface ISortName {
   name: string;
   sortProperty: "rating" | "-rating" | "price" | "-price" | "title" | "-title";
@@ -64,11 +69,6 @@ export interface IinfotooltipSlice {
   title: string;
   name: string;
 }
-export interface IpizzaSlice {
-  items: IPizzaBlockProps[];
-  status: "loading" | "success" | "error";
-  searchValue: string;
-  item: IPizzaBlockProps[];
-}
+
 
 

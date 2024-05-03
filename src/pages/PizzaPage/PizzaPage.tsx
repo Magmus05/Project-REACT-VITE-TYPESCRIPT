@@ -1,31 +1,31 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { fetchPizzaById } from "../../redux/slices/pizzaSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import "./PizzaPage.scss";
-import {IPizza} from "../../types/Types"
-
-fetchPizzaById;
+import { useAppDispatch } from "../../redux/srore";
+import type { RootState } from "../../redux/srore";
 
 function PizzaPage() {
-  const dispatch = useDispatch();
-  const params = useParams();
+  const dispatch = useAppDispatch();
+  const { id } = useParams();
+  if (id) {
+    React.useEffect(() => {
+      dispatch(fetchPizzaById(id));
+    }, []);
+  }
 
-  React.useEffect(() => {
-    dispatch(fetchPizzaById(params.id));
-  }, []);
-
-  const pizza: IPizza = useSelector((state) => state.pizzaSlice.item);
+  const { item } = useSelector((state: RootState) => state.pizzaSlice);
 
   return (
     <section className=" container pizzaPage">
       <img
-        src={pizza.imageUrl}
-        alt={pizza.title}
+        src={item?.imageUrl}
+        alt={item?.title}
         className="pizzaPage__image"
       />
       <div className="pizzaPage__info">
-        <h2>{pizza.title} </h2>
+        <h2>{item?.title} </h2>
         <h3>Описание:</h3>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus
@@ -33,7 +33,7 @@ function PizzaPage() {
           perspiciatis. Distinctio fugiat quia earum corporis nulla.
         </p>
         <p>
-          Цена: <span>{pizza.price} </span>руб
+          Цена: <span>{item?.price} </span>руб
         </p>
       </div>
     </section>

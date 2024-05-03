@@ -1,16 +1,18 @@
-import React, { FormEvent, FormHTMLAttributes } from "react";
+import React, { FormEvent} from "react";
 import { regex } from "../../assets/variables";
 import InputForm from "../../components/InputForm/InputForm";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import { clearItems } from "../../redux/slices/cartSlice";
 import style from "./OrderPage.module.scss";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setInfoTooltip } from "../../redux/slices/infoTooltipSlice";
+import type { RootState } from "../../redux/srore";
+import { useAppDispatch } from "../../redux/srore";
 
 const OrderPage: React.FC = () => {
-  const orderCart = useSelector((state) => state.cartSlice);
-  const dispatch = useDispatch();
+  const orderCart = useSelector((state: RootState) => state.cartSlice);
+  const dispatch = useAppDispatch();
   const { resetForm } = useFormAndValidation({});
   const navigate = useNavigate();
 

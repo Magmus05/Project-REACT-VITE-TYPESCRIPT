@@ -1,12 +1,12 @@
-import {PayloadAction, createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-import {IPizzaBlockProps, IpizzaSlice} from "../../types/Types";
+import { IPizza, IPizzaBlockProps, IpizzaSlice } from "../../types/Types";
 
 export const fetchPizzas = createAsyncThunk(
   "pizza/fetchPizzasStatus",
 
-	//   , thunkApi  // 
-  async (params:  Record <string, string>) => {
+  //   , thunkApi  //
+  async (params: Record<string, string>) => {
     const { category, sortBy, order, searchValue } = params;
     const { data } = await axios.get(
       `https://65c35fe039055e7482c0b7bd.mockapi.io/pizzas?${category}&sortBy=${sortBy}&order=${order}&search=${searchValue}`
@@ -19,9 +19,8 @@ export const fetchPizzas = createAsyncThunk(
 export const fetchPizzaById = createAsyncThunk(
   "pizza/fetchPizzasItemById",
 
-	//   , thunkApi  // 
-  async (id) => {
-    
+  //   , thunkApi  //
+  async (id: string) => {
     const { data } = await axios.get(
       `https://65c35fe039055e7482c0b7bd.mockapi.io/pizzas/${id}`
     );
@@ -34,7 +33,7 @@ const initialState: IpizzaSlice = {
   items: [],
   status: "loading",
   searchValue: "",
-  item: [],
+  item: null,
 };
 
 const pizzaSlice = createSlice({
@@ -54,27 +53,31 @@ const pizzaSlice = createSlice({
     builder.addCase(fetchPizzas.pending, (state) => {
       state.status = "loading";
     });
-    builder.addCase(fetchPizzas.fulfilled, (state, action) => {
-      // Add user to the state array
-      state.items = action.payload;
-      state.status = "success";
-    });
+    builder.addCase(
+      fetchPizzas.fulfilled,
+      (state, action: PayloadAction<IPizzaBlockProps[]>) => {
+        // Add user to the state array
+        state.items = action.payload;
+        state.status = "success";
+      }
+    );
     builder.addCase(fetchPizzas.rejected, (state) => {
       state.status = "error";
       state.items = [];
     });
 
-
-
     builder.addCase(fetchPizzaById.pending, (state) => {
-      state.item = [];
+      state.item = null;
     });
-    builder.addCase(fetchPizzaById.fulfilled, (state, action) => {
-      // Add user to the state array
-      state.item = action.payload;
-    });
+    builder.addCase(
+      fetchPizzaById.fulfilled,
+      (state, action: PayloadAction<IPizza>) => {
+        // Add user to the state array
+        state.item = action.payload;
+      }
+    );
     builder.addCase(fetchPizzaById.rejected, (state) => {
-      state.item = [];
+      state.item = null;
     });
   },
 });

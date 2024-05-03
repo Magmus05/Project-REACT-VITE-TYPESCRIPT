@@ -4,8 +4,8 @@ import Categories from "../components/Categories";
 import Sort from "../components/Sort";
 import { PizzaBlock, Skeleton } from "../components/PizzaBlock";
 
-import { useSelector, useDispatch } from "react-redux";
-import { setCategoryId, setFilters } from "../redux/slices/filterSlice";
+import { useSelector } from "react-redux";
+import { setFilters } from "../redux/slices/filterSlice";
 import QueryString from "qs";
 import { useNavigate } from "react-router-dom";
 import { sortNames } from "../assets/variables";
