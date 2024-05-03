@@ -12,16 +12,18 @@ import { sortNames } from "../assets/variables";
 import { categories } from "../assets/variables";
 import InputSearch from "../components/InputSearch/InputSearch";
 import { fetchPizzas } from "../redux/slices/pizzaSlice";
+import type { RootState } from "../redux/srore";
+import { useAppDispatch } from "../redux/srore";
 
 function Main() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const { categoryId, sort } = useSelector((state) => state.filter);
+  const { categoryId, sort } = useSelector((state: RootState) => state.filter);
   const isSearch = React.useRef(false);
   const isMounted = React.useRef(false);
   const { items, status, searchValue } = useSelector(
-    (state) => state.pizzaSlice
+    (state: RootState) => state.pizzaSlice
   );
 
   // Если изменили параметры и был первый рендер
@@ -46,12 +48,15 @@ function Main() {
         (obj) => obj.sortProperty === params.sortProperty
       );
 
-      dispatch(
-        setFilters({
-          ...params,
-          sort,
-        })
-      );
+      if (sort) {
+        dispatch(
+          setFilters({
+            categoryId: Number(params.categoryId),
+            sort: sort,
+          })
+        );
+      }
+
       isSearch.current = true;
     }
   }, []);
@@ -63,9 +68,6 @@ function Main() {
     window.scrollTo(0, 0);
   }, [sort, categoryId, searchValue]);
 
-  function handleChangeCategoryId(id) {
-    dispatch(setCategoryId(id));
-  }
 
   const getPizzas = () => {
     const sortBy = sort.sortProperty.replace("-", "");
@@ -86,7 +88,7 @@ function Main() {
       <div className="content__top">
         <Categories
           categoryId={categoryId}
-          setCategoryId={handleChangeCategoryId}
+
         />
         <Sort />
       </div>

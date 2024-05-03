@@ -1,46 +1,42 @@
 export interface IPizza {
-	id: string;
-	imageUrl:string;
-	title:string;
-	types: number[];
-	sizes: number[];
-	price: number;
-	category: number;
-	rating: number;
+  id: string;
+  imageUrl: string;
+  title: string;
+  types: number[];
+  sizes: number[];
+  price: number;
+  category: number;
+  rating: number;
 }
 
 export interface ISortName {
-	name: string;
-	sortProperty: string;
+  name: string;
+  sortProperty: "rating" | "-rating" | "price" | "-price" | "title" | "-title";
 }
 
 export interface IRegex {
-	name: string;
+  name: string;
   adress: string;
   tel: string;
   email: string;
 }
 
-export interface ICategoriesProps {
-	categoryId: number;
-	setCategoryId: any;
-}
 export interface ICartItemProps {
-	id: string;
-	imageUrl:string;
-	title:string;
-	type: number;
-	size: number;
-	price: number;
-	count: number;
+  id: string;
+  imageUrl: string;
+  title: string;
+  type: number;
+  size: number;
+  price: number;
+  count: number;
 }
 export interface IPizzaBlockProps {
-	id: string;
-	imageUrl:string;
-	title:string;
-	types: number[];
-	sizes: number[];
-	price: number;
+  id: string;
+  imageUrl: string;
+  title: string;
+  types: number[];
+  sizes: number[];
+  price: number;
 }
 
 export interface IInputFormProps {
@@ -52,3 +48,27 @@ export interface IInputFormProps {
   maxLength: number;
   pattern?: string;
 }
+
+export interface IcartSlice {
+  totalCount: number;
+  totalPrice: number;
+  items: ICartItemProps[];
+}
+
+export interface IfilterSlice {
+  categoryId: number;
+  sort: ISortName;
+}
+export interface IinfotooltipSlice {
+  isOpen: boolean;
+  title: string;
+  name: string;
+}
+export interface IpizzaSlice {
+  items: IPizzaBlockProps[];
+  status: "loading" | "success" | "error";
+  searchValue: string;
+  item: IPizzaBlockProps[];
+}
+
+

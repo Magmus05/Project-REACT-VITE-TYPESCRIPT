@@ -1,11 +1,15 @@
 import { useState, useCallback } from "react";
 
-export function useFormAndValidation(inputValues: {}) {
+type FormInputs = {
+  [key: string]: string | number; // значение может быть строкой, числом
+};
+
+export function useFormAndValidation(inputValues: FormInputs) {
   const [values, setValues] = useState(inputValues);
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<FormInputs>({});
   const [isValid, setIsValid] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setValues({ ...values, [name]: value });
     if (
@@ -20,15 +24,22 @@ export function useFormAndValidation(inputValues: {}) {
     } else {
       setErrors({ ...errors, [name]: e.target.validationMessage });
     }
+    const formData = e.target as HTMLInputElement | null;
+    if (formData) {
+      const parentForm = formData.closest("form");
 
-    setIsValid(e.target.closest("form").checkValidity());
-    const btn = e.target.closest("form").querySelector("[name='buttonForm']");
-    if (e.target.closest("form").checkValidity()) {
-      btn.disabled = false;
-    } else {
-      btn.disabled = true;
+      if (parentForm) {
+        setIsValid(parentForm.checkValidity());
+        const btn: HTMLButtonElement | null = parentForm.querySelector(
+          "[name='buttonForm']"
+        );
+        if (parentForm.checkValidity()) {
+          btn ? (btn.disabled = false) : "";
+        } else {
+          btn ? (btn.disabled = true) : "";
+        }
+      }
     }
-
   };
 
   const resetForm = useCallback(

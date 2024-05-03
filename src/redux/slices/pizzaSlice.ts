@@ -1,11 +1,12 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import {PayloadAction, createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import {IPizzaBlockProps, IpizzaSlice} from "../../types/Types";
 
 export const fetchPizzas = createAsyncThunk(
   "pizza/fetchPizzasStatus",
 
 	//   , thunkApi  // 
-  async (params) => {
+  async (params:  Record <string, string>) => {
     const { category, sortBy, order, searchValue } = params;
     const { data } = await axios.get(
       `https://65c35fe039055e7482c0b7bd.mockapi.io/pizzas?${category}&sortBy=${sortBy}&order=${order}&search=${searchValue}`
@@ -29,11 +30,10 @@ export const fetchPizzaById = createAsyncThunk(
   }
 );
 
-const initialState = {
+const initialState: IpizzaSlice = {
   items: [],
   status: "loading",
   searchValue: "",
-	searchItems: [],
   item: [],
 };
 
@@ -41,10 +41,10 @@ const pizzaSlice = createSlice({
   name: "pizza",
   initialState,
   reducers: {
-    setItems: (state, action) => {
+    setItems: (state, action: PayloadAction<IPizzaBlockProps[]>) => {
       state.items = action.payload;
     },
-    setSearchValue: (state, action) => {
+    setSearchValue: (state, action: PayloadAction<string>) => {
       state.searchValue = action.payload;
     },
   },

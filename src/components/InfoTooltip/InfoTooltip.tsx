@@ -5,18 +5,22 @@ import okImg from "../../assets/img/infoTooltip/OK.png";
 import errorImg from "../../assets/img/infoTooltip/Error.png";
 import { useSelector, useDispatch } from "react-redux";
 import { setInfoTooltip } from "../../redux/slices/infoTooltipSlice";
+import type { RootState } from "../../redux/srore";
+import { IinfotooltipSlice } from "../../types/Types";
 
 const InfoTooltip: React.FC = () => {
-  const isInfoTooltip = useSelector((state)=>state.infoTooltip)
+  const isInfoTooltip = useSelector((state: RootState) => state.infoTooltip);
 
-  const dispatch= useDispatch()
+  const dispatch = useDispatch();
 
-  function closeInfoToolTip(isInfoTooltip) {
-    dispatch(setInfoTooltip({
-      isOpen: false,
-      title: isInfoTooltip.title,
-      name: isInfoTooltip.name,
-    }))
+  function closeInfoToolTip(isInfoTooltip: IinfotooltipSlice) {
+    dispatch(
+      setInfoTooltip({
+        isOpen: false,
+        title: isInfoTooltip.title,
+        name: isInfoTooltip.name,
+      })
+    );
   }
 
   usePopupClose(isInfoTooltip, closeInfoToolTip);
@@ -30,7 +34,7 @@ const InfoTooltip: React.FC = () => {
         <button
           className="popup__close popup-close-button"
           type="button"
-          onClick={()=> closeInfoToolTip(isInfoTooltip)}
+          onClick={() => closeInfoToolTip(isInfoTooltip)}
         >
           <span className="sr-only">Закрыть</span>
         </button>
@@ -46,6 +50,6 @@ const InfoTooltip: React.FC = () => {
       </div>
     </div>
   );
-}
+};
 
 export default InfoTooltip;

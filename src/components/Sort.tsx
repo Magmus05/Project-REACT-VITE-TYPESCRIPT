@@ -16,10 +16,13 @@ const Sort: React.FC = () => {
   };
 
   React.useEffect(() => {
-    const handleClickOutsideSort = (event) => {
+    const handleClickOutsideSort = (event: MouseEvent) => {
+      const _event = event as MouseEvent & {
+        target: { localName: string };
+      };
       if (
-        event.target.localName !== "li" &&
-        event.target.localName !== "span"
+        _event.target.localName !== "li" &&
+        _event.target.localName !== "span"
       ) {
         setOpenPopup(false);
       }

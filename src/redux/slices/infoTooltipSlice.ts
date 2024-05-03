@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { IinfotooltipSlice } from "../../types/Types";
 
-const initialState = {
+const initialState: IinfotooltipSlice = {
   isOpen: false,
   title: "",
   name: "",
@@ -15,11 +16,9 @@ const infoTooltip = createSlice({
       state.title = action.payload.title;
       state.name = action.payload.name;
     },
-
-
   },
 });
 
-export const {setInfoTooltip} = infoTooltip.actions;
+export const { setInfoTooltip } = infoTooltip.actions;
 
 export default infoTooltip.reducer;

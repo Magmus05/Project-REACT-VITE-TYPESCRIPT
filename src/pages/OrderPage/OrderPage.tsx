@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FormEvent, FormHTMLAttributes } from "react";
 import { regex } from "../../assets/variables";
 import InputForm from "../../components/InputForm/InputForm";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
@@ -11,11 +11,14 @@ import { setInfoTooltip } from "../../redux/slices/infoTooltipSlice";
 const OrderPage: React.FC = () => {
   const orderCart = useSelector((state) => state.cartSlice);
   const dispatch = useDispatch();
-  const { resetForm } = useFormAndValidation();
+  const { resetForm } = useFormAndValidation({});
   const navigate = useNavigate();
 
-  const handleSubmitForm = (e) => {
+  const handleSubmitForm = (e: FormEvent) => {
     e.preventDefault();
+    const dataClient = e as FormEvent & {
+      target: {value:string}[]
+    }
 
     orderCart.items.map((item) =>
       console.log(
@@ -27,7 +30,7 @@ const OrderPage: React.FC = () => {
       `Цена заказа: ${orderCart.totalPrice} Количество товара: ${orderCart.totalCount} `
     );
     console.log(
-      `Имя: ${e.target[0].value}; Адрес: ${e.target[1].value}; Телефон: ${e.target[2].value}; email: ${e.target[3].value}`
+      `Имя: ${dataClient.target[0].value}; Адрес: ${dataClient.target[1].value}; Телефон: ${dataClient.target[2].value}; email: ${dataClient.target[3].value}`
     );
     dispatch(clearItems());
     resetForm();
