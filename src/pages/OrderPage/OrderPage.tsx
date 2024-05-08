@@ -1,6 +1,6 @@
 import React, { FormEvent} from "react";
 import { regex } from "../../assets/variables";
-import InputForm from "../../components/InputForm/InputForm";
+import {InputForm} from "../../components/InputForm/InputForm";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import { clearItems } from "../../redux/slices/cartSlice";
 import style from "./OrderPage.module.scss";

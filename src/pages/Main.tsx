@@ -1,19 +1,20 @@
 import React from "react";
-
-import Categories from "../components/Categories";
-import Sort from "../components/Sort";
-import { PizzaBlock, Skeleton } from "../components/PizzaBlock";
-
 import { useSelector } from "react-redux";
 import { setFilters } from "../redux/slices/filterSlice";
 import QueryString from "qs";
 import { useNavigate } from "react-router-dom";
 import { sortNames } from "../assets/variables";
 import { categories } from "../assets/variables";
-import InputSearch from "../components/InputSearch/InputSearch";
 import { fetchPizzas } from "../redux/slices/pizzaSlice";
 import type { RootState } from "../redux/srore";
 import { useAppDispatch } from "../redux/srore";
+import {
+  Categories,
+  Sort,
+  InputSearch,
+  PizzaBlock,
+  Skeleton,
+} from "../components";
 
 function Main() {
   const dispatch = useAppDispatch();
@@ -68,7 +69,6 @@ function Main() {
     window.scrollTo(0, 0);
   }, [sort, categoryId, searchValue]);
 
-
   const getPizzas = () => {
     const sortBy = sort.sortProperty.replace("-", "");
     const order = sort.sortProperty.includes("-") ? "asc" : "desc";
@@ -86,10 +86,7 @@ function Main() {
   return (
     <div className="container">
       <div className="content__top">
-        <Categories
-          categoryId={categoryId}
-
-        />
+        <Categories categoryId={categoryId} />
         <Sort />
       </div>
       <div className="content__search-and-title">

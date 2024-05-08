@@ -4,7 +4,7 @@ import { setSortType } from "../redux/slices/filterSlice";
 import { sortNames } from "../assets/variables";
 import { ISortName } from "../types/Types";
 
-const Sort: React.FC = () => {
+export const Sort: React.FC = () => {
   const [openPopup, setOpenPopup] = React.useState(false);
   const sortType = useSelector((state) => state.filter.sort);
   const dispatch = useDispatch();
@@ -69,4 +69,3 @@ const Sort: React.FC = () => {
     </div>
   );
 };
-export default Sort;

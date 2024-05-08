@@ -1,11 +1,13 @@
-@import '../variables';
+@import "../variables";
 
 .categories {
+  scrollbar-width: thin; /* Установить узкую полосу прокрутки */
+  scrollbar-color: #fe5f1e #f0f0f0; /* Цвет бегунка (#888) и дорожки (#f0f0f0) */
   margin-right: 10px;
   ul {
     display: flex;
     flex-wrap: wrap;
-
+    margin-bottom: 3px;
     li {
       background-color: #f9f9f9;
       padding: 13px 30px;
@@ -30,4 +32,16 @@
       }
     }
   }
+}
+.categories::-webkit-scrollbar {
+  width: 0px; /* Ширина вертикальной полосы прокрутки */
+  height: 5px; /* Высота горизонтальной полосы прокрутки */
+}
+.categories::-webkit-scrollbar-track {
+  border-radius: 50px; /* Радиус скругления углов */
+}
+
+/* Стилизуем сам бегунок полосы прокрутки */
+.categories::-webkit-scrollbar-thumb {
+  border-radius: 50px; /* Радиус скругления углов */
 }

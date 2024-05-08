@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./NotFound.module.scss";
 
-const NotFound: React.FC = () =>{
+export const NotFound: React.FC = () =>{
   return (
     <div className="container">
       <h1 className={styles.title}>
@@ -15,5 +15,3 @@ const NotFound: React.FC = () =>{
     </div>
   );
 }
-
-export default NotFound;

@@ -15,7 +15,7 @@
     // "jsx": "react-jsx",
     // "module": "ESNext",
     "checkJs": true,
-    "module": "ES6",
+    "module": "es2020",
     "jsx": "preserve",
     "types": ["vite/client"],
     /* Linting */

@@ -4,7 +4,7 @@ import { addItem, selectCartItemById } from "../../redux/slices/cartSlice";
 import { Link } from "react-router-dom";
 import { IPizzaBlockProps } from "../../types/Types";
 
-const PizzaBlock: React.FC<IPizzaBlockProps> = ({
+export const PizzaBlock: React.FC<IPizzaBlockProps> = ({
   id,
   title,
   price,
@@ -27,13 +27,13 @@ const PizzaBlock: React.FC<IPizzaBlockProps> = ({
         title,
         price: Math.round(price * Number(`1.${activeSize}`)),
         imageUrl,
-        type: Number(typeNames[activeType]),
+        type: (typeNames[activeType]),
         size: sizes[activeSize],
         count: 0,
       })
     );
   };
-console.log(addedItemCount);
+
 
   return (
     <>
@@ -95,4 +95,3 @@ console.log(addedItemCount);
     </>
   );
 };
-export default PizzaBlock;

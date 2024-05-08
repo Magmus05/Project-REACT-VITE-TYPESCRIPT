@@ -4,7 +4,7 @@ import debounce from "debounce";
 import { useDispatch } from "react-redux";
 import { setSearchValue } from "../../redux/slices/pizzaSlice";
 
-const InputSearch:React.FC = () => {
+export const InputSearch:React.FC = () => {
   const dispatch = useDispatch();
   const [value, setValue] = React.useState("");
 
@@ -23,7 +23,7 @@ const InputSearch:React.FC = () => {
     inputRef.current?.focus();
   };
 
-  const onCahgeInput = (e) => {
+  const onCahgeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(e.target.value);
     updateSearchValueInput(e.target.value);
   };
@@ -44,5 +44,3 @@ const InputSearch:React.FC = () => {
     </label>
   );
 }
-
-export default InputSearch;

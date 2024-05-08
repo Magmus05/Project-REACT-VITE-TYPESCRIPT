@@ -3,9 +3,37 @@
 @import "./libs/normalize";
 
 @import "./components/all";
+// html{
+//   scrollbar-width: thin;  /* Установить узкую полосу прокрутки */
+//   scrollbar-color: #fe5f1e #f0f0f0; /* Цвет бегунка (#888) и дорожки (#f0f0f0) */
+// }
+::-webkit-scrollbar {
+  width: 12px; /* Ширина вертикальной полосы прокрутки */
+  height: 12px; /* Высота горизонтальной полосы прокрутки */
+}
+
+/* Стилизуем дорожку (фоновую часть) полосы прокрутки */
+::-webkit-scrollbar-track {
+  background: #f0f0f0; /* Цвет фона дорожки */
+  border-radius: 6px; /* Радиус скругления углов */
+}
+
+/* Стилизуем сам бегунок полосы прокрутки */
+::-webkit-scrollbar-thumb {
+  background: $orange; /* Цвет бегунка */
+  border-radius: 6px; /* Радиус скругления углов */
+}
+
+/* Стилизуем бегунок при наведении */
+::-webkit-scrollbar-thumb:hover {
+  background: #c24817; /* Темнее при наведении */
+}
+
+
 
 body {
   background-color: $background;
+
 }
 
 .wrapper {
@@ -239,6 +267,19 @@ body {
             display: none;
           }
         }
+        &:disabled{
+          color: #9d9d9d;
+          background-color: #fff;
+          border-color: #8d8d8d;
+          opacity: 0.4;
+          svg path{
+            fill: #8d8d8d;
+          }
+          &:active{
+            transform: none;
+          }
+        }
+        
       }
 
       b {

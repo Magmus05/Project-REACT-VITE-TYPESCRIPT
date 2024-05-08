@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import CartItem from "../components/CartItem";
 import { useSelector, useDispatch } from "react-redux";
 import { cartSelector, clearItems } from "../redux/slices/cartSlice";
-import CartEmpty from "../components/CartEmpty";
+import { CartEmpty, CartItem } from "../components";
 
 const Cart: React.FC = () => {
   const { items, totalCount, totalPrice } = useSelector(cartSelector);
@@ -13,6 +12,7 @@ const Cart: React.FC = () => {
   if (!totalCount) {
     return <CartEmpty />;
   }
+  console.log(items);
 
   return (
     <div className="container container--cart">

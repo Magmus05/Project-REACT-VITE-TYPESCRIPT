@@ -30,7 +30,7 @@ export interface ICartItemProps {
   id: string;
   imageUrl: string;
   title: string;
-  type: number;
+  type: string;
   size: number;
   price: number;
   count: number;

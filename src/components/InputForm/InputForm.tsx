@@ -3,7 +3,7 @@ import style from "./InputForm.module.scss";
 import { useFormAndValidation } from "../../hooks/useFormAndValidation";
 import {IInputFormProps} from "../../types/Types"
 
-const InputForm: React.FC<IInputFormProps> = ({
+export const InputForm: React.FC<IInputFormProps> = ({
   type,
   name,
   title,
@@ -33,5 +33,3 @@ const InputForm: React.FC<IInputFormProps> = ({
     </label>
   );
 }
-
-export default InputForm;

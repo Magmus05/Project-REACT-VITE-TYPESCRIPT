@@ -8,7 +8,7 @@ import { setInfoTooltip } from "../../redux/slices/infoTooltipSlice";
 import type { RootState } from "../../redux/srore";
 import { IinfotooltipSlice } from "../../types/Types";
 
-const InfoTooltip: React.FC = () => {
+export const InfoTooltip: React.FC = () => {
   const isInfoTooltip = useSelector((state: RootState) => state.infoTooltip);
 
   const dispatch = useDispatch();
@@ -52,4 +52,3 @@ const InfoTooltip: React.FC = () => {
   );
 };
 
-export default InfoTooltip;
