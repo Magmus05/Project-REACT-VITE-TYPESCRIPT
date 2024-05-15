@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItem, selectCartItemById } from "../../redux/slices/cartSlice";
 import { Link } from "react-router-dom";
 import { IPizzaBlockProps } from "../../types/Types";
+// import { useInView } from "react-intersection-observer";
 
 export const PizzaBlock: React.FC<IPizzaBlockProps> = ({
   id,
@@ -11,14 +12,22 @@ export const PizzaBlock: React.FC<IPizzaBlockProps> = ({
   imageUrl,
   types,
   sizes,
-}) => {
+
+}, ) => {
   const [activeType, setactiveType] = React.useState(0);
   const [activeSize, setactiveSize] = React.useState(0);
   const typeNames = ["тонкое", "традиционное"];
   const dispatch = useDispatch();
   const cartItem = useSelector(selectCartItemById(id));
-
   const addedItemCount: number | undefined = cartItem ? cartItem.count : 0;
+
+  // const {ref, inView} = useInView({
+  //   threshold: 1,
+  //   triggerOnce: true,
+  // })
+
+
+
   
   const addPizzaInCart = () => {
     dispatch(
@@ -36,7 +45,7 @@ export const PizzaBlock: React.FC<IPizzaBlockProps> = ({
 
 
   return (
-    <>
+
       <div className="pizza-block">
         <Link to={`/pizza/${id}`}>
           <img className="pizza-block__image" src={imageUrl} alt="Pizza" />
@@ -92,6 +101,6 @@ export const PizzaBlock: React.FC<IPizzaBlockProps> = ({
           </button>
         </div>
       </div>
-    </>
+
   );
 };

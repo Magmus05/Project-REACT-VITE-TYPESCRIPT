@@ -16,6 +16,8 @@ import {
   Skeleton,
 } from "../components";
 
+import { useInView } from "react-intersection-observer";
+
 function Main() {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -26,6 +28,17 @@ function Main() {
   const { items, status, searchValue } = useSelector(
     (state: RootState) => state.pizzaSlice
   );
+  const [limit, setLimit] = React.useState(2);
+
+  const { ref, inView } = useInView({
+    threshold: 1,
+  });
+
+  React.useEffect(() => {
+    if (inView && limit < items.length) setLimit(limit + 2);
+  }, [inView]);
+
+  console.log(limit);
 
   // Если изменили параметры и был первый рендер
   React.useEffect(() => {
@@ -84,22 +97,27 @@ function Main() {
     );
   };
   return (
-    <div className="container">
-      <div className="content__top">
-        <Categories categoryId={categoryId} />
-        <Sort />
-      </div>
-      <div className="content__search-and-title">
-        <h1 className="content__title">{categories[categoryId]}</h1>{" "}
-        <InputSearch />{" "}
-      </div>
+    <>
+      <div className="container">
+        <div className="content__top">
+          <Categories categoryId={categoryId} />
+          <Sort />
+        </div>
+        <div className="content__search-and-title">
+          <h1 className="content__title">{categories[categoryId]}</h1>{" "}
+          <InputSearch />{" "}
+        </div>
 
-      <div className="content__items">
-        {status === "loading"
-          ? [...new Array(6)].map((item, i) => <Skeleton key={i} />)
-          : items.map((pizza, i) => <PizzaBlock {...pizza} key={i} />)}
+        <div className="content__items">
+          {status === "loading"
+            ? [...new Array(6)].map((item, i) => <Skeleton key={i} />)
+            : items.map(
+                (pizza, i) => limit > i && <PizzaBlock {...pizza} key={i} />
+              )}
+        </div>
       </div>
-    </div>
+      <footer ref={ref}></footer>
+    </>
   );
 }
 

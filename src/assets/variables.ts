@@ -28,10 +28,9 @@ export const sortNames: ISortName[] = [
   },
 ];
 export const regex: IRegex = {
-  name: "^[А-Яа-яёa-zA-Z \\-]+$",
-  adress: "^[А-Яа-яёa \\[0-9] \\-]+$",
-  tel: "^(8|\\+7)[\\- ]?[\\(]?\\d{3}[\\)]?[\\- ]?\\d{3}[\\- ]?\\d{2}[\\- ]?\\d{2}$", //идеалка, а не регулярка
-  email: "^\\S+@\\S+\\.\\S+$",
+  name: /^[А-Яа-яёa-zA-Z \\-]+$/,
+  adress: /^[a-zA-Zа-яА-Я.,\-\s]+$/,
+  email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
 };
 
 export const categories: string[] = [

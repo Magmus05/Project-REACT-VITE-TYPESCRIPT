@@ -29,13 +29,16 @@
   line-height: normal;
 }
 
-.inputform__input-error {
-  color: #ee3465;
+.inputform__input_error {
+  border: 2px solid #ee3465;
 }
 .inputform__input:focus {
   box-shadow: inset -1px -1px 5px 1px rgba(254, 95, 30, 0.5);
 	border: 1px solid #fe5f1e;
 }
-.inputform__input:valid {
+.inputform__inputTel:valid {
+	border: 1px solid #fe5f1e;
+}
+.inputform__input_valid {
 	border: 1px solid #fe5f1e;
 }
