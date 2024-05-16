@@ -28,14 +28,25 @@ function Main() {
   const { items, status, searchValue } = useSelector(
     (state: RootState) => state.pizzaSlice
   );
-  const [limit, setLimit] = React.useState(2);
+  const [limit, setLimit] = React.useState(0);
+  console.log(window.innerWidth);
+
+  React.useEffect(() => {
+    if (window.innerWidth > 1260) {
+      setLimit(4);
+    } else {
+      setLimit(3);
+    }
+    if (window.innerWidth <= 955) setLimit(2);
+    if (window.innerWidth <= 331) setLimit(1);
+  }, []);
 
   const { ref, inView } = useInView({
     threshold: 1,
   });
 
   React.useEffect(() => {
-    if (inView && limit < items.length) setLimit(limit + 2);
+    if (inView && limit < items.length) setLimit(limit + limit);
   }, [inView]);
 
   console.log(limit);
